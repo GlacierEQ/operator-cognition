@@ -2,9 +2,19 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ReasoningContract",
   "type": "object",
+  "description": "Defines the boundaries and obligations of cognitive execution. Requires concise rationales rather than raw chain-of-thought logs.",
   "properties": {
-    "id": {
-      "type": "string"
+    "contract_id": { "type": "string" },
+    "agent_genome_ref": { "type": "string", "description": "Reference to the 180-position Agent Genome" },
+    "epistemic_mode": { 
+      "type": "string", 
+      "enum": ["EXPLORATION", "VERIFICATION", "EXECUTION", "RECOVERY"]
+    },
+    "rationale_limit_words": { "type": "integer", "default": 100 },
+    "prohibited_cognitive_patterns": {
+      "type": "array",
+      "items": { "type": "string" }
     }
-  }
+  },
+  "required": ["contract_id", "agent_genome_ref", "epistemic_mode"]
 }

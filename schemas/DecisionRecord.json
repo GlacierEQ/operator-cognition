@@ -2,9 +2,22 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "DecisionRecord",
   "type": "object",
+  "description": "A concise, immutable record of a strategic or routing decision made by the cognition engine.",
   "properties": {
-    "id": {
-      "type": "string"
-    }
-  }
+    "decision_id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "mission_id": { "type": "string" },
+    "context_hash": { "type": "string", "description": "Hash of the context state at the time of decision" },
+    "selected_route": { "type": "string" },
+    "rejected_alternatives": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "concise_rationale": { 
+      "type": "string",
+      "description": "Distilled logic for the choice; must not contain raw CoT or prompt dumps."
+    },
+    "confidence_score": { "type": "number", "minimum": 0, "maximum": 1.0 }
+  },
+  "required": ["decision_id", "timestamp", "selected_route", "concise_rationale"]
 }

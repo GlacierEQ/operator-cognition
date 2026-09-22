@@ -2,9 +2,31 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "RouteGeneration",
   "type": "object",
+  "description": "Output specification for a multi-route generation pass by the cognition engine.",
   "properties": {
-    "id": {
-      "type": "string"
+    "generation_id": { "type": "string" },
+    "target_objective": { "type": "string" },
+    "primary_route": {
+      "type": "object",
+      "properties": {
+        "route_id": { "type": "string" },
+        "steps": { "type": "array", "items": { "type": "string" } },
+        "required_capabilities": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["route_id", "steps"]
+    },
+    "fallback_routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "route_id": { "type": "string" },
+          "trigger_condition": { "type": "string" },
+          "steps": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["route_id", "trigger_condition"]
+      }
     }
-  }
+  },
+  "required": ["generation_id", "target_objective", "primary_route"]
 }
