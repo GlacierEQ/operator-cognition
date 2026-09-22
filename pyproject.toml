@@ -1,0 +1,15 @@
+[project]
+name = "operator-cognition"
+version = "1.0.0"
+description = "Canonical repository for operator-cognition in the GlacierEQ Sovereign Estate."
+requires-python = ">=3.9"
+dependencies = [
+    "PyYAML>=6.0",
+    "jsonschema>=4.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
