@@ -1,9 +1,38 @@
 # operator-cognition
 
-Canonical repository for the GlacierEQ Sovereign Estate.
+> Service-level objective enforcement, circuit breaker patterns, deployment preview authority, and cost-aware resource allocation for Operator platform.
 
-## Contracts Exported
-*(Define exported JSON schemas here)*
+**Domain:** Cloud AI Platform Engineering
+**Company Orbit:** Operator
 
-## Testing
-`python3 -m pytest`
+## Architecture
+
+```
+src/operator_cognition/
+├── __init__.py
+└── core.py          # Cloud AI Platform Engineering implementation
+tests/
+└── test_platform.py
+.github/workflows/
+└── ci.yml           # Automated CI enforcement
+```
+
+## Quick Start
+
+```bash
+# Run tests
+PYTHONPATH=src pytest tests/ -v
+
+# Lint
+ruff check src/ tests/
+```
+
+## Key Classes
+
+| Class | Purpose |
+|-------|---------|
+| `CircuitBreaker` | Circuit breaker for service reliability. |
+
+## License
+
+MIT
